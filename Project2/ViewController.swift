@@ -33,6 +33,10 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
+        let infoButton = UIButton(type: .infoLight)
+        infoButton.addTarget(self, action: #selector(showScore), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: infoButton)
+        
         askQuestion()
     }
     
@@ -42,7 +46,7 @@ class ViewController: UIViewController {
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
-        title = "\(countries[correctAnswer].uppercased()) \t SCORE: \(score)"
+        title = "\(countries[correctAnswer].uppercased())"
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -64,6 +68,12 @@ class ViewController: UIViewController {
         }
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(ac, animated: true)
+    }
+    
+    @objc func showScore() {
+        let ac = UIAlertController(title: "Your score is:", message: "\(score)", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
         present(ac, animated: true)
     }
     
