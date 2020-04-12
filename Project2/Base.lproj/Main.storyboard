@@ -17,6 +17,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-2g-Htu">
                                 <rect key="frame" x="107" y="100" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="x1R-2g-Htu" secondAttribute="height" multiplier="2:1" id="iC3-n9-p3L"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="994-HS-kCf"/>
@@ -24,6 +27,9 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BS-jq-wb0">
                                 <rect key="frame" x="107" y="360" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0BS-jq-wb0" secondAttribute="height" multiplier="2:1" id="6j9-nD-cNG"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9a-ak-3kf"/>
@@ -31,6 +37,9 @@
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSD-Zd-OHl">
                                 <rect key="frame" x="107" y="230" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GSD-Zd-OHl" secondAttribute="height" multiplier="2:1" id="isN-HH-xQn"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C0q-K8-pWp"/>
@@ -39,11 +48,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0BS-jq-wb0" secondAttribute="bottom" constant="20" id="0m7-bd-EUQ"/>
                             <constraint firstItem="GSD-Zd-OHl" firstAttribute="centerX" secondItem="x1R-2g-Htu" secondAttribute="centerX" id="4f2-dU-AiQ"/>
                             <constraint firstItem="0BS-jq-wb0" firstAttribute="centerX" secondItem="GSD-Zd-OHl" secondAttribute="centerX" id="AC7-fs-x97"/>
                             <constraint firstItem="x1R-2g-Htu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="AbK-2b-TAz"/>
                             <constraint firstItem="0BS-jq-wb0" firstAttribute="top" secondItem="GSD-Zd-OHl" secondAttribute="bottom" constant="30" id="LyA-4w-g7P"/>
                             <constraint firstItem="x1R-2g-Htu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Xtn-c7-QDJ"/>
+                            <constraint firstItem="GSD-Zd-OHl" firstAttribute="height" secondItem="0BS-jq-wb0" secondAttribute="height" id="qqR-bO-4EM"/>
+                            <constraint firstItem="x1R-2g-Htu" firstAttribute="height" secondItem="GSD-Zd-OHl" secondAttribute="height" id="uPl-p1-0eG"/>
                             <constraint firstItem="GSD-Zd-OHl" firstAttribute="top" secondItem="x1R-2g-Htu" secondAttribute="bottom" constant="30" id="yL6-22-Dga"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
