@@ -52,11 +52,19 @@ class ViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
         let message: String
+        let defaults = UserDefaults.standard
         
         if sender.tag == correctAnswer {
             title = "Correct"
             score += 1
         } else {
+            let bestScore = defaults.integer(forKey: "bestScore")
+            if score > bestScore {
+                defaults.set(score, forKey: "bestScore")
+                let ac = UIAlertController(title: "Best Score!", message: "You have new best score! \(score)", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+                present(ac, animated: true)
+            }
             title = "Wrong! That's the flag of \(countries[sender.tag].uppercased())"
             score -= 1
         }
