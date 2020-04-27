@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import UserNotifications
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
@@ -20,7 +21,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.removeAllPendingNotificationRequests()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                print("Nice!")
+            } else {
+                print("Not nice...")
+            }
+            
+        }
+        scheduleLocal()
+        
         countries += ["estonia", "france", "germany",
                       "ireland", "italy", "monaco", "nigeria",
                       "poland", "russia", "spain", "uk", "us"]
@@ -47,6 +62,19 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         title = "\(countries[correctAnswer].uppercased())"
+    }
+    
+    func scheduleLocal() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Please come back!"
+        content.body = "Don't forget us, go back and play to get new legend items!"
+        content.sound = .default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -89,5 +117,14 @@ class ViewController: UIViewController {
         present(ac, animated: true)
     }
     
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier:
+            scheduleLocal()
+        default:
+            break
+        }
+    }
 }
 
